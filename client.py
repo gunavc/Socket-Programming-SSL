@@ -37,7 +37,7 @@ def getTicket():
     conn.close()
 
 
-window = tk.Canvas(root,height=650, width=650)
+window = tk.Canvas(root,height="650px", width="650px")
 window.pack()
 
 #Displaying no. of available tickets
