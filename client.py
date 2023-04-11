@@ -40,7 +40,7 @@ def getTicket():
 
 root = tk.Tk()
 
-Canvas = tk.Canvas(root,width=650, height=650)
+Canvas = tk.Canvas(root,width="650px", height="650px")
 
 #Displaying no. of available tickets
 ticketDisplay = tk.Label(Canvas, text="Tickets=")
