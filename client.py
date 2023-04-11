@@ -2,7 +2,6 @@ import ssl
 import socket
 import tkinter as tk
 
-root = tk.Tk()
 
 def bookTicket():
     context = ssl._create_unverified_context()
@@ -36,18 +35,24 @@ def getTicket():
     ticketDisplay.config(text=f"Available Tickets = {data}")
     conn.close()
 
+# Writing the GUI
+# Root window
 
-window = tk.Canvas(root,height=650, width=650)
-window.pack()
+root = tk.Tk()
+
+Canvas = tk.Canvas(root,width=650, height=650)
 
 #Displaying no. of available tickets
-ticketDisplay = tk.Label(window, text="Tickets=")
+ticketDisplay = tk.Label(Canvas, text="Tickets=")
 getTicket()
-ticketDisplay.grid()
+
 
 #Button to book ticket
-bookButton = tk.Button(window, text="Book Ticket", command= lambda : bookTicket())
+bookButton = tk.Button(Canvas, text="Book Ticket", command= lambda : bookTicket())
 
+# Packing all the items
+Canvas.pack()
+ticketDisplay.pack()
 bookButton.pack()
 
 root.mainloop()
