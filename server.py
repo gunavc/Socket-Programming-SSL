@@ -1,7 +1,7 @@
 import ssl
 import socket
 
-tickets = 2
+tickets = 100
 
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 context.load_cert_chain(certfile="certi.pem")
@@ -22,10 +22,11 @@ while True:
         msg = str(tickets)
         connstream.send(str.encode(msg))
         #print("Display Request")
-    elif(data=="b"):
-        if(tickets>0):
-            tickets -= 1
-            connstream.send(str.encode("Successfully booked a ticket"))
+    elif(data.isnumeric()):
+        no_ticket = int(data)
+        if(tickets>=no_ticket and tickets>0):
+            tickets -= no_ticket
+            connstream.send(str.encode(f"Successfully booked {no_ticket} ticket"))
         else:
             connstream.send(str.encode("Ticket could not be booked"))
         #print(tickets)
