@@ -6,8 +6,8 @@ tickets = 100
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 context.load_cert_chain(certfile="certi.pem")
 
-hostPort = 1234
-hostName = "127.0.0.1"
+hostPort = 65514
+hostName = "10.30.202.217"
 
 bindsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 bindsocket.bind((hostName, hostPort))
@@ -29,5 +29,3 @@ while True:
             connstream.send(str.encode(f"Successfully booked {no_ticket} ticket"))
         else:
             connstream.send(str.encode("Ticket could not be booked"))
-        #print(tickets)
-        #print("Book Request")
